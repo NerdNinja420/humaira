@@ -56,9 +56,6 @@ class Coordinate:
     def rot90(self) -> Coordinate:
         return Coordinate(-self.y, self.x)
 
-    # def lerp(self,other:Coordinate)-> Coordinate:
-    #     return
-
     def get_x(self) -> float:
         return self.x
 

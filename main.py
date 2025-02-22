@@ -1,24 +1,24 @@
-from math import floor, ceil, copysign, pi
+from math import ceil, floor, copysign, pi
+from time import sleep
 
 import pygame
 from pygame import Surface
 from pygame.locals import QUIT
 
-from mod.objects.player import Player
+from mod.ext.func import strokeLine
 from mod.objects.scene import Scene
 from mod.objects.minimap import Map
+from mod.objects.player import Player
 from mod.math.coordinate import Coordinate
 from mod.ext.color import Color
-
-# from mod.ext.func import fillCircle, strokeLine
 from mod.ext.constants import (
+    DEFAULT_SCENE,
     FPS,
     GAB_FACTOR,
-    WIN_WIDTH,
-    WIN_HEIGHT,
-    PUSH_FACTOR,
     INFINITY,
-    DEFAULT_SCENE,
+    PUSH_FACTOR,
+    WIN_HEIGHT,
+    WIN_WIDTH,
 )
 
 
@@ -68,7 +68,7 @@ def cast_ray(map: Map, p1: Coordinate, p2: Coordinate) -> Coordinate | None:
 
 
 def render(surface: Surface, map: Map, player: Player):
-    RES = 500
+    RES = 600
     width = ceil(WIN_WIDTH / RES)
     for x in range(RES):
         r1, r2 = player.get_fov_range()
@@ -80,11 +80,37 @@ def render(surface: Surface, map: Map, player: Player):
             v = hit_point - Coordinate(*player.position)
             d = Coordinate.from_angle(player.direction)
             height = WIN_HEIGHT / d.dot(v)
+            print(f"v:{v}, d:{d}, height:{height}")
             pygame.draw.rect(
                 surface,
                 (*Color.SKY, 255),
                 (x * width, (WIN_HEIGHT - height) * 0.5, width + 1, height),
             )
+
+
+def handle_movement(rendering_surface: Surface, map: Map, player: Player):
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_w]:
+        pos = Coordinate.from_angle(player.direction) * 0.1
+        new_x = player.position[0] + pos.x
+        new_y = player.position[1] + pos.y
+        player.position = (new_x, new_y)
+
+    if keys[pygame.K_s]:
+        pos = Coordinate.from_angle(player.direction) * 0.1
+        new_x = player.position[0] - pos.x
+        new_y = player.position[1] - pos.y
+        player.position = (new_x, new_y)
+
+    if keys[pygame.K_a]:
+        player.direction += pi * 0.01
+
+    if keys[pygame.K_d]:
+        player.direction -= pi * 0.01
+
+    rendering_surface.fill((*Color.BASE,))
+    render(rendering_surface, map, player)
 
 
 def main():
@@ -108,35 +134,6 @@ def main():
             if event.type == QUIT:
                 return
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w:
-                    pos = Coordinate.from_angle(PLAYER.direction) * 0.5
-                    new_x = PLAYER.position[0] + pos.x
-                    new_y = PLAYER.position[1] + pos.y
-                    PLAYER.position = (new_x, new_y)
-
-                    RENDERING_SURFACE.fill((*Color.BASE,))
-                    render(RENDERING_SURFACE, MAP, PLAYER)
-
-                if event.key == pygame.K_s:
-                    pos = Coordinate.from_angle(PLAYER.direction) * 0.5
-                    new_x = PLAYER.position[0] - pos.x
-                    new_y = PLAYER.position[1] - pos.y
-                    PLAYER.position = (new_x, new_y)
-
-                    RENDERING_SURFACE.fill((*Color.BASE,))
-                    render(RENDERING_SURFACE, MAP, PLAYER)
-                if event.key == pygame.K_a:
-                    PLAYER.direction += pi * 0.1
-
-                    RENDERING_SURFACE.fill((*Color.BASE,))
-                    render(RENDERING_SURFACE, MAP, PLAYER)
-                if event.key == pygame.K_d:
-                    PLAYER.direction -= pi * 0.1
-
-                    RENDERING_SURFACE.fill((*Color.BASE,))
-                    render(RENDERING_SURFACE, MAP, PLAYER)
-
         MAP.render_minimap()
         MAP.render_cells()
         MAP.render_player()
@@ -146,8 +143,11 @@ def main():
             MINIMAP_SURFACE,
             (MINIMAP_SURFACE.get_width() * GAB_FACTOR, MINIMAP_SURFACE.get_width() * GAB_FACTOR),
         )
-        render(RENDERING_SURFACE, MAP, PLAYER)
 
+        render(RENDERING_SURFACE, MAP, PLAYER)
+        handle_movement(RENDERING_SURFACE, MAP, PLAYER)
+
+        sleep(1)
         pygame.display.update()
         CLOCK.tick(FPS)
 

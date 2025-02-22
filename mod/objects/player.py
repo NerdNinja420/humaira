@@ -12,6 +12,7 @@ class Player:
     def get_fov_range(self) -> list[Coordinate]:
         position = Coordinate(*self.position)
         p = position + (Coordinate.from_angle(self.direction) * CAMERA_CAMERAPLANE_DISTANCE)
+        # li = tan(FOV * 0.5) * CAMERA_CAMERAPLANE_DISTANCE
 
         r1 = p - ((p - position).rot90().normalize())
         r2 = p + ((p - position).rot90().normalize())
@@ -29,5 +30,3 @@ class Player:
         strokeLine(surface, p, r2)
         strokeLine(surface, position, r1)
         strokeLine(surface, position, r2)
-
-        # l = tan(FOV * 0.5) * CAMERA_CAMERAPLANE_DISTANCE

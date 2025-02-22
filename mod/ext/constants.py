@@ -1,11 +1,10 @@
 from math import pi
-from typing import Final
 from platform import system
-
+from typing import Final
 
 FPS: Final[int] = 60
 EPS: Final[tuple[float, float]] = (1e-3, 1e-3)
-FOV: Final[float] = pi * 0.5
+FOV: Final[float] = pi * 0.1
 
 if system() == "Linux":
     SCREEN_FACTOR = 150
@@ -14,9 +13,11 @@ if system() == "Linux":
     GAB: Final[int] = int(WIN_WIDTH * 0.1)
     GAB_FACTOR: Final[float] = 0.02
 else:
-    WIN_WIDTH: Final[int] = 600  # type: ignore
-    WIN_HEIGHT: Final[int] = 600  # type: ignore
-    GAB: Final[int] = 10  # type: ignore
+    SCREEN_FACTOR = 50  # type: ignore
+    WIN_WIDTH: Final[int] = 16 * SCREEN_FACTOR  # type: ignore
+    WIN_HEIGHT: Final[int] = 9 * SCREEN_FACTOR  # type: ignore
+    GAB: Final[int] = int(WIN_WIDTH * 0.1)  # type: ignore
+    GAB_FACTOR: Final[float] = 0.02  # type: ignore
 
 
 INFINITY: Final[float] = 1e30
@@ -42,12 +43,6 @@ RECT_SIZE_WIDTH_LIMITS: Final[tuple[float, float]] = (10, int(WIN_WIDTH / 3))
 RECT_SIZE_HEIGHT_LIMITS: Final[tuple[float, float]] = (10, int(WIN_HEIGHT / 3))
 RECT_POSITION_X_LIMITS: Final[tuple[float, float]] = (0, WIN_WIDTH - RECT_SIZE_WIDTH_LIMITS[1])
 RECT_POSITION_Y_LIMITS: Final[tuple[float, float]] = (0, WIN_HEIGHT - RECT_SIZE_HEIGHT_LIMITS[1])
-
-MAX_MIN_X = [-10.0, 10.0]
-MAX_MIN_Y = [-10.0, 10.0]
-POWER_CUNSUMPTION = 1
-MAX_POWER = 30
-MAX_SKATT = 50
 
 if system() == "Linux":
     FONT: Final[str] = "JetBrains Mono Nerd Font"
