@@ -26,6 +26,7 @@ INFINITY: Final[float] = 1e30
 PUSH_FACTOR: Final[float] = 1e-6
 CIRCLE_RADIUS: Final[int] = int(GAB * 0.05)
 GRID_CELL_COUNT: Final[int] = 10
+MINIMAP_SIZE: Final[tuple[int, int]] = (WIN_WIDTH // 3, WIN_HEIGHT // 3)
 CAMERA_CAMERAPLANE_DISTANCE: Final[float] = 1
 
 # fmt: off
