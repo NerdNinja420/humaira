@@ -1,23 +1,22 @@
-
 # Humaira - raycasting implementation in pygame
 
 ![Screenshot](./assets/humaira.png)
 
 ## Controls
 
-| Key  | Action        |
-|------|---------------|
-| W    | Move forward  |
-| S    | Move backward |
-| A    | Turn left     |
-| D    | Turn right    |
+| Key | Action        |
+| --- | ------------- |
+| W   | Move forward  |
+| S   | Move backward |
+| A   | Turn left     |
+| D   | Turn right    |
 
 ## Purpose
 
-- The purpose of the project was/is `Recreational programming`. 
-- The extreme use of `OOP` is due to the fact that i want character 6. Although
-there are `6` classes in the whole program, the only actually helpful class is the 
-`Coordinate` class. All others can be omitted.
+- The purpose of the project was/is `Recreational programming`.
+- The extreme use of `OOP` is due to the fact that i wanted character 6. Sorry non-oop dudes!
+- Although there are `6` classes in the whole program, the only actually helpful class is the
+  `Coordinate` class. All others can be omitted.
 
 ## Requirements
 
@@ -25,6 +24,7 @@ there are `6` classes in the whole program, the only actually helpful class is t
 - Pygame 2.6.1 or later
 
 ## Installation
+
 ### Arch Linux
 
 ```sh
@@ -37,4 +37,3 @@ there are `6` classes in the whole program, the only actually helpful class is t
 ## License
 
 This project is licensed under the MIT License.
-
