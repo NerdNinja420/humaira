@@ -1,5 +1,6 @@
 from pygame import Surface
 
+from mod.ext.color import Color
 from mod.ext.constants import GAB_FACTOR
 
 
@@ -23,3 +24,17 @@ class Scene:
 
     def get_info(self) -> tuple[int, int, int, int, int]:
         return (self.row, self.col, self.cell_size, self.horizontal_gab, self.vertical_gab)
+
+    @classmethod
+    def get_color(cls, n: int) -> Color:
+        match n:
+            case 1:
+                return Color.RED
+            case 2:
+                return Color.FLAMINGO
+            case 3:
+                return Color.GREEN
+            case 4:
+                return Color.SKY
+            case _:
+                raise ValueError(f"No color defined for n: {n}")
