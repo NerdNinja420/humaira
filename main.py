@@ -78,7 +78,6 @@ def render(surface: Surface, map: Map, player: Player):
             v = hit_point - Coordinate(*player.position)
             d = Coordinate.from_angle(player.direction)
             height = WIN_HEIGHT / d.dot(v)
-            print(f"v:{v}, d:{d}, height:{height}")
             pygame.draw.rect(
                 surface,
                 (*Color.SKY, 255),
