@@ -1,5 +1,5 @@
 
-# Humaira - an overcomplicated raycasting implementation in pygame
+# Humaira - raycasting implementation in pygame
 
 ![Screenshot](./assets/humaira.png)
 
