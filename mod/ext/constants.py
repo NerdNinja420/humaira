@@ -26,21 +26,8 @@ INFINITY: Final[float] = 1e30
 PUSH_FACTOR: Final[float] = 1e-6
 CIRCLE_RADIUS: Final[int] = int(GAB * 0.05)
 GRID_CELL_COUNT: Final[int] = 10
-
 CAMERA_CAMERAPLANE_DISTANCE: Final[float] = 1
 
-# DEFAULT_SCENE: list[list[int]] = [
-#     [0, 0, 2, 2, 3, 0, 0, 2, 2, 2, 1, 0, 0, 0],
-#     [0, 0, 1, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0],
-#     [0, 0, 3, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     [2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-# ]
 # fmt: off
 DEFAULT_SCENE = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -59,7 +46,7 @@ DEFAULT_SCENE = [
     [1, 0, 0, 0, 0, 4, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 3, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
-
+# fmt: on
 
 RECT_SIZE_WIDTH_LIMITS: Final[tuple[float, float]] = (10, int(WIN_WIDTH / 3))
 RECT_SIZE_HEIGHT_LIMITS: Final[tuple[float, float]] = (10, int(WIN_HEIGHT / 3))
