@@ -30,6 +30,7 @@
 ```sh
    git clone https://github.com/NerdNinja420/humaira
    cd humaira
+   chmod +x ./install.sh
    ./install.sh
    humaira
 ```
