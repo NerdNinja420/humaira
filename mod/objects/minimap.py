@@ -78,7 +78,7 @@ class Map:
     def render_cells(self):
         for col in range(self.grid_col):
             for row in range(self.grid_row):
-                if self.scene[row][col] == 1:
+                if self.scene[row][col] >= 1:
                     x = self.to_pixel(col, self.HORIZONTAL_GAB) + 1
                     y = self.to_pixel(row, self.VERTICAL_GAB) + 1
                     w = self.grid_cell_size - 1
