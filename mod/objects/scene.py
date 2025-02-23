@@ -31,9 +31,9 @@ class Scene:
             case 1:
                 return Color.RED
             case 2:
-                return Color.FLAMINGO
+                return Color.PINK
             case 3:
-                return Color.GREEN
+                return Color.MAROON
             case 4:
                 return Color.SKY
             case _:
