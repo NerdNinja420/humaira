@@ -12,30 +12,32 @@ if system() == "Linux":
     WIN_HEIGHT: Final[int] = 9 * SCREEN_FACTOR
     GAB: Final[int] = int(WIN_WIDTH * 0.1)
     GAB_FACTOR: Final[float] = 0.02
+    RES: Final[int] = 500
 else:
-    SCREEN_FACTOR = 50  # type: ignore
+    SCREEN_FACTOR = 80  # type: ignore
     WIN_WIDTH: Final[int] = 16 * SCREEN_FACTOR  # type: ignore
     WIN_HEIGHT: Final[int] = 9 * SCREEN_FACTOR  # type: ignore
     GAB: Final[int] = int(WIN_WIDTH * 0.1)  # type: ignore
     GAB_FACTOR: Final[float] = 0.02  # type: ignore
+    RES: Final[int] = 200  # type: ignore
 
 
 INFINITY: Final[float] = 1e30
-PUSH_FACTOR: Final[float] = 1e-3
-CIRCLE_RADIUS: Final[int] = 10
+PUSH_FACTOR: Final[float] = 1e-6
+CIRCLE_RADIUS: Final[int] = int(GAB * 0.05)
 GRID_CELL_COUNT: Final[int] = 10
 
 CAMERA_CAMERAPLANE_DISTANCE: Final[float] = 1
 
 DEFAULT_SCENE: list[list[int]] = [
-    [0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0],
-    [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 2, 2, 2, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 3, 0, 3, 0, 0],
+    [0, 0, 0, 0, 0, 3, 0, 1, 0, 1, 0, 0],
+    [0, 0, 2, 2, 3, 2, 0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4],
 ]
 
 
