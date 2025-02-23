@@ -2,3 +2,4 @@
 
 
 spire_venv/
+*__pycache__/

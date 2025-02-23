@@ -1,11 +1,9 @@
 from math import ceil, floor, copysign, pi
-from time import sleep
 
 import pygame
 from pygame import Surface
 from pygame.locals import QUIT
 
-from mod.ext.func import strokeLine
 from mod.objects.scene import Scene
 from mod.objects.minimap import Map
 from mod.objects.player import Player
@@ -147,7 +145,6 @@ def main():
         render(RENDERING_SURFACE, MAP, PLAYER)
         handle_movement(RENDERING_SURFACE, MAP, PLAYER)
 
-        sleep(1)
         pygame.display.update()
         CLOCK.tick(FPS)
 
