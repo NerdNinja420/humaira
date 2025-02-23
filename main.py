@@ -10,13 +10,14 @@ from mod.objects.player import Player
 from mod.math.coordinate import Coordinate
 from mod.ext.color import Color
 from mod.ext.constants import (
-    DEFAULT_SCENE,
-    FPS,
-    GAB_FACTOR,
-    INFINITY,
-    PUSH_FACTOR,
     WIN_HEIGHT,
     WIN_WIDTH,
+    DEFAULT_SCENE,
+    INFINITY,
+    GAB_FACTOR,
+    PUSH_FACTOR,
+    FPS,
+    RES,
 )
 
 
@@ -55,7 +56,7 @@ def ray_step(p1: Coordinate, p2: Coordinate) -> Coordinate:
 def cast_ray(map: Map, p1: Coordinate, p2: Coordinate) -> Coordinate | None:
     p3 = ray_step(p1, p2)
     while map.is_insight(p2):
-        if map.get_scene_cell(p2) == 1:
+        if map.get_scene_cell(p2) >= 1:
             return p2
 
         p1 = p2
@@ -66,21 +67,19 @@ def cast_ray(map: Map, p1: Coordinate, p2: Coordinate) -> Coordinate | None:
 
 
 def render(surface: Surface, map: Map, player: Player):
-    RES = 600
     width = ceil(WIN_WIDTH / RES)
     for x in range(RES):
         r1, r2 = player.get_fov_range()
         point_on_camera_plane = r1 + ((r2 - r1) * (x / RES))  # linear interpolation
         hit_point = cast_ray(map, Coordinate(*player.position), point_on_camera_plane)
         if hit_point is not None:
-            # distance = (hit_point - Coordinate(*player.position)).abs()
-            # height = max(0, min(WIN_HEIGHT, WIN_HEIGHT / (distance)))
             v = hit_point - Coordinate(*player.position)
             d = Coordinate.from_angle(player.direction)
             height = WIN_HEIGHT / d.dot(v)
+            color = Scene.get_color(map.get_scene_cell(hit_point))
             pygame.draw.rect(
                 surface,
-                (*Color.SKY, 255),
+                (*color, 255),
                 (x * width, (WIN_HEIGHT - height) * 0.5, width + 1, height),
             )
 
@@ -101,10 +100,10 @@ def handle_movement(rendering_surface: Surface, map: Map, player: Player):
         player.position = (new_x, new_y)
 
     if keys[pygame.K_a]:
-        player.direction += pi * 0.01
+        player.direction += pi * 0.02
 
     if keys[pygame.K_d]:
-        player.direction -= pi * 0.01
+        player.direction -= pi * 0.02
 
     rendering_surface.fill((*Color.BASE,))
     render(rendering_surface, map, player)
