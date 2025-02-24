@@ -14,6 +14,7 @@ if system() == "Linux":
     GAB_FACTOR: Final[float] = 0.02
     RES: Final[int] = 500
 else:
+    RES: Final[int] = 600  # type: ignore
     SCREEN_FACTOR = 80  # type: ignore
     WIN_WIDTH: Final[int] = 16 * SCREEN_FACTOR  # type: ignore
     WIN_HEIGHT: Final[int] = 9 * SCREEN_FACTOR  # type: ignore

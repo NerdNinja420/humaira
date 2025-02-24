@@ -64,7 +64,7 @@ class Raycaster:
         return None
 
     def render(self):
-        width = ceil(WIN_WIDTH / RES)
+        width = WIN_WIDTH / RES
         for x in range(RES):
             r1, r2 = self.player.get_fov_range()
             point_on_camera_plane = r1 + ((r2 - r1) * (x / RES))  # linear interpolation
