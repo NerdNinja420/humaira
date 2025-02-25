@@ -14,7 +14,7 @@
 ## Purpose
 
 - The purpose of the project was/is `Recreational programming`.
-- The extreme use of `OOP` is due to the fact that i wanted character 6. Sorry non-oop dudes!
+- The extreme use of `OOP` in this game is not necessary at all. Sorry non-oop dudes!
 - Although there are `6` classes in the whole program, the only actually helpful class is the
   `Coordinate` class. All others can be omitted.
 
