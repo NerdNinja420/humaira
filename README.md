@@ -35,6 +35,11 @@
    humaira
 ```
 
+## Resources
+
+- Lode's Raycasting Tutorial: [https://lodev.org/cgtutor/raycasting.html](https://lodev.org/cgtutor/raycasting.html)
+- Tsoding's 3D in TypeScript using Ray Casting: [https://www.youtube.com/watch?v=K1xEkA46CuM](https://www.youtube.com/watch?v=K1xEkA46CuM)
+
 ## License
 
 This project is licensed under the MIT License.
