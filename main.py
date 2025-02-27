@@ -47,9 +47,7 @@ def handle_movement(r: Raycaster):
 def main():
     pygame.init()
     WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-    MINIMAP_SURFACE = pygame.transform.scale(
-        pygame.Surface((WIN_WIDTH, WIN_HEIGHT)), MINIMAP_SIZE
-    )
+    MINIMAP_SURFACE = pygame.transform.scale(pygame.Surface((WIN_WIDTH, WIN_HEIGHT)), MINIMAP_SIZE)
     RENDERING_SURFACE = pygame.Surface((WIN_WIDTH, WIN_HEIGHT))
     CLOCK = pygame.time.Clock()
 
@@ -74,10 +72,7 @@ def main():
         WIN.blit(RENDERING_SURFACE, (0, 0))
         WIN.blit(
             MINIMAP_SURFACE,
-            (
-                MINIMAP_SURFACE.get_width() * GAB_FACTOR,
-                MINIMAP_SURFACE.get_width() * GAB_FACTOR,
-            ),
+            (MINIMAP_SURFACE.get_width() * GAB_FACTOR, MINIMAP_SURFACE.get_width() * GAB_FACTOR),
         )
 
         RAYCASTER.render()
