@@ -71,5 +71,5 @@ if ! grep -q "alias humaira" ~/.zshrc; then
 fi
 
 # run the game
-pickle
+humaira
 deactivate
