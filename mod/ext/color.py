@@ -48,31 +48,6 @@ class Color(Enum):
 
         return choice(list(cls)[:14])
 
-    # @classmethod
-    # def range(
-    #     cls,
-    #     limits: list[tuple[int, int, int]],
-    #     steps: int,
-    #     reshape: int,
-    # ) -> list[list[tuple[int, int, int]]]:
-    #
-    #     if steps < 2:
-    #         raise ValueError(f"Neger what: {steps} ")
-    #
-    #     colors: list[tuple[int, int, int]] = []
-    #     for i in range(len(limits) - 1):
-    #         start = limits[i]
-    #         end = limits[i + 1]
-    #
-    #         for j in range(int(steps / (len(limits) - 1))):
-    #             r = round(start[0] + (end[0] - start[0]) * j / (steps - 1))
-    #             g = round(start[1] + (end[1] - start[1]) * j / (steps - 1))
-    #             b = round(start[2] + (end[2] - start[2]) * j / (steps - 1))
-    #             colors.append((r, g, b))
-    #
-    #     return [colors[i : i + reshape] for i in range(0, len(colors), reshape)]
-    #
-
     @classmethod
     def range(
         cls,
