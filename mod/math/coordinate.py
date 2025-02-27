@@ -7,6 +7,7 @@ if TYPE_CHECKING:
 
 class Coordinate:
     _map_ref: Map | None = None
+    _msg: str = "Map reference is not set. Call Coordinate.set_map(map_instance) first."
 
     def __init__(self, x: float = 0, y: float = 0) -> None:
         if not self._map_ref:
@@ -73,14 +74,23 @@ class Coordinate:
 
     @classmethod
     def set_map(cls, map_instance: Map) -> None:
+        if not cls._map_ref:
+            raise ValueError(cls._msg)
+
         cls._map_ref = map_instance
 
     @classmethod
     def zero(cls) -> Coordinate:
+        if not cls._map_ref:
+            raise ValueError(cls._msg)
+
         return cls(0, 0)
 
     @classmethod
     def from_angle(cls, angle: float) -> Coordinate:
+        if not cls._map_ref:
+            raise ValueError(cls._msg)
+
         from math import cos, sin
 
         return cls(cos(angle), sin(angle))
@@ -88,8 +98,8 @@ class Coordinate:
     @classmethod
     def new(cls, x: float = 0, y: float = 0) -> Coordinate:
         if not cls._map_ref:
-            msg = "Map reference is not set. Call Coordinate.set_map(map_instance) first."
-            raise ValueError(msg)
+            raise ValueError(cls._msg)
+
         x_logical = cls._map_ref.to_grid(x, cls._map_ref.HORIZONTAL_GAB)
         y_logical = cls._map_ref.to_grid(y, cls._map_ref.HORIZONTAL_GAB)
         return cls(x_logical, y_logical)
