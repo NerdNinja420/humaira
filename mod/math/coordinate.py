@@ -11,8 +11,7 @@ class Coordinate:
 
     def __init__(self, x: float = 0, y: float = 0) -> None:
         if not self._map_ref:
-            msg = "Map reference is not set. Call Coordinate.set_map(map_instance) first."
-            raise ValueError(msg)
+            raise ValueError(self._msg)
         self.x = x
         self.y = y
 
