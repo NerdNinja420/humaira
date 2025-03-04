@@ -73,9 +73,6 @@ class Coordinate:
 
     @classmethod
     def set_map(cls, map_instance: Map) -> None:
-        if not cls._map_ref:
-            raise ValueError(cls._msg)
-
         cls._map_ref = map_instance
 
     @classmethod
