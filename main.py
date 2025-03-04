@@ -3,12 +3,12 @@ from math import pi
 import pygame
 from pygame.locals import QUIT
 
-from mod.math.raycaster import Raycaster
 from mod.objects.scene import Scene
 from mod.objects.minimap import Map
 from mod.objects.player import Player
-from mod.math.coordinate import Coordinate
 from mod.ext.color import Color
+from mod.math.raycaster import Raycaster
+from mod.math.coordinate import Coordinate
 from mod.ext.constants import (
     MINIMAP_SIZE,
     WIN_HEIGHT,
