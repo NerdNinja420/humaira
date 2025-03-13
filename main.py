@@ -35,10 +35,10 @@ def handle_movement(r: Raycaster):
         r.player.position = (new_x, new_y)
 
     if keys[pygame.K_a]:
-        r.player.direction += pi * 0.02
+        r.player.direction -= pi * 0.02
 
     if keys[pygame.K_d]:
-        r.player.direction -= pi * 0.02
+        r.player.direction += pi * 0.02
 
     r.surface.fill((*Color.BASE,))
     r.render()
