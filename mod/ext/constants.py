@@ -7,7 +7,7 @@ EPS: Final[tuple[float, float]] = (1e-3, 1e-3)
 FOV: Final[float] = pi * 0.1
 
 if system() == "Linux":
-    SCREEN_FACTOR = 150
+    SCREEN_FACTOR = 80
     WIN_WIDTH: Final[int] = 16 * SCREEN_FACTOR
     WIN_HEIGHT: Final[int] = 9 * SCREEN_FACTOR
     GAB: Final[int] = int(WIN_WIDTH * 0.1)

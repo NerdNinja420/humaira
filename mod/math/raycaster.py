@@ -1,19 +1,19 @@
-from math import ceil, floor, copysign
+from math import ceil, copysign, floor
 
 import pygame
 from pygame import Surface
 
-from mod.objects.scene import Scene
-from mod.objects.minimap import Map
-from mod.objects.player import Player
-from mod.math.coordinate import Coordinate
 from mod.ext.constants import (
-    WIN_HEIGHT,
-    WIN_WIDTH,
     INFINITY,
     PUSH_FACTOR,
     RES,
+    WIN_HEIGHT,
+    WIN_WIDTH,
 )
+from mod.math.coordinate import Coordinate
+from mod.objects.minimap import Map
+from mod.objects.player import Player
+from mod.objects.scene import Scene
 
 
 class Raycaster:
@@ -52,15 +52,12 @@ class Raycaster:
         return Coordinate(x, y)
 
     def __cast_ray(self, p1: Coordinate, p2: Coordinate) -> Coordinate | None:
-        p3 = self.__ray_step(p1, p2)
+        p2 = self.__ray_step(p1, p2)  # Start at first intersection, not camera plane
         while self.map.is_insight(p2):
             if self.map.get_scene_cell(p2) >= 1:
                 return p2
-
-            p1 = p2
-            p2 = p3
             p3 = self.__ray_step(p1, p2)
-
+            p1, p2 = p2, p3
         return None
 
     def render(self):
@@ -70,9 +67,9 @@ class Raycaster:
             point_on_camera_plane = r1 + ((r2 - r1) * (x / RES))  # linear interpolation
             hit_point = self.__cast_ray(Coordinate(*self.player.position), point_on_camera_plane)
             if hit_point is not None:
-                v = hit_point - Coordinate(*self.player.position)
-                d = Coordinate.from_angle(self.player.direction)
-                height = WIN_HEIGHT / d.dot(v)
+                distance = hit_point - Coordinate(*self.player.position)
+                perp_dist = Coordinate.from_angle(self.player.direction)
+                height = WIN_HEIGHT / perp_dist.dot(distance)
                 color = Scene.get_color(self.map.get_scene_cell(hit_point))
                 pygame.draw.rect(
                     self.surface,
