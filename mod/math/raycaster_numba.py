@@ -81,18 +81,18 @@ def render_numba(
 
     dir_x = cos(player_dir)
     dir_y = sin(player_dir)
-
+    
     perp_x = -dir_y
     perp_y = dir_x
-
+    
     p_x = player_x + dir_x * camera_plane_dist
     p_y = player_y + dir_y * camera_plane_dist
-
+    
     r1_x = p_x - perp_x
     r1_y = p_y - perp_y
     r2_x = p_x + perp_x
     r2_y = p_y + perp_y
-
+    
     delta_x = (r2_x - r1_x) / res
     delta_y = (r2_y - r1_y) / res
 
@@ -106,7 +106,6 @@ def render_numba(
 
         hit_x, hit_y, wall_type = cast_ray_single(
             player_x, player_y, rd_x, rd_y, grid, grid_rows, grid_cols, push_factor
-        )
 
         if hit_x >= 0:
             vx = hit_x - player_x

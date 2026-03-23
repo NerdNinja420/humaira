@@ -3,6 +3,7 @@ from typing import Final
 
 FPS: Final[int] = 60
 FOV: Final[float] = pi * 0.1
+
 SCREEN_FACTOR: Final[int] = 80
 WIN_WIDTH: Final[int] = 16 * SCREEN_FACTOR
 WIN_HEIGHT: Final[int] = 9 * SCREEN_FACTOR
