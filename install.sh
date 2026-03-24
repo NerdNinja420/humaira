@@ -59,6 +59,9 @@ source humaira_venv/bin/activate
 echo "Installing pygame 2.6.1..."
 pip3 install pygame==2.6.1
 
+echo "Installing numba for optimization..."
+pip3 install numba numpy
+
 # Temporary alias for running the game
 alias humaira="python3 $(pwd)/main.py"
 echo "Temporary alias 'humaira' set for this session."
